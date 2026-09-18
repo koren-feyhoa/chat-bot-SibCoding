@@ -1,0 +1,1 @@
+1075374911application.add_handler(CallbackQueryHandler(admin_reject_booking, pattern=r'^reject_'))
