@@ -1,0 +1,21 @@
+# Виртуальное окружение (учитываем вложенность)
+classroom_bot/.venv/
+.venv/
+
+# Кэш Python и системы
+**/__pycache__/
+*.pyc
+classroom_bot/.DS_Store
+.DS_Store
+
+# Токены, пароли и данные гугл-аккаунта (ВАЖНО!)
+classroom_bot/.env
+classroom_bot/credentials.json
+classroom_bot/token.pickle
+
+# Локальные файлы данных (чтобы не затереть чужие логи/пользователей)
+classroom_bot/admin_users.csv
+classroom_bot/pending_bookings.json
+
+# Настройки среды разработки PyCharm
+.idea/
