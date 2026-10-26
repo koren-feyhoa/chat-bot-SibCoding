@@ -1,0 +1,22 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+
+Person(client, "Клиент", "Студент или сотрудник, желающий забронировать пространство")
+Person(admin, "Администратор", "Управляет заявками и подтверждает брони")
+
+System(system, "ИС Бронирования «СибКодинг»", "Позволяет клиентам бронировать аудиторию, а админам — управлять заявками")
+
+System_Ext(tg, "Telegram API", "Обеспечивает обмен сообщениями")
+System_Ext(max_api, "MAX API", "Обеспечивает обмен сообщениями")
+System_Ext(gcal, "Google Calendar", "Хранит расписание и события бронирования")
+
+Rel(client, tg, "Отправляет сообщения")
+Rel(client, max_api, "Отправляет сообщения")
+Rel(admin, tg, "Управляет заявками")
+
+Rel(tg, system, "Передает данные (Webhooks/API)")
+Rel(max_api, system, "Передает данные (Webhooks/API)")
+Rel(system, gcal, "Проверяет и создает события", "REST API")
+
+@enduml

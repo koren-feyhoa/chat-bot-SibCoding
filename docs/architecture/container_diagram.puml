@@ -1,0 +1,37 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+
+Person(client, "Клиент", "Студент или сотрудник")
+Person(admin, "Администратор", "Управляет заявками")
+
+System_Ext(tg, "Telegram API", "Мессенджер")
+System_Ext(max_api, "MAX API", "Мессенджер")
+System_Ext(gcal, "Google Calendar", "Внешний календарь")
+
+System_Boundary(c1, "ИС Бронирования «СибКодинг»") {
+    Container(tg_adapter, "Telegram Bot Adapter", "Python", "Принимает сообщения из Telegram")
+    Container(max_adapter, "MAX Bot Adapter", "Python", "Принимает сообщения из MAX")
+    
+    Container(core, "Core API", "Python / FastAPI", "Центральная бизнес-логика, обработка заявок")
+    
+    Container(gcal_client, "Google API Client", "Python", "Модуль интеграции с календарем")
+    
+    ContainerDb(db, "Database", "PostgreSQL", "Хранит пользователей, коворкинги и брони")
+}
+
+Rel(client, tg, "Пишет боту")
+Rel(client, max_api, "Пишет боту")
+Rel(admin, tg, "Обрабатывает заявки")
+
+Rel(tg, tg_adapter, "Webhooks")
+Rel(max_api, max_adapter, "Webhooks")
+
+Rel(tg_adapter, core, "Передает данные", "Внутренний API")
+Rel(max_adapter, core, "Передает данные", "Внутренний API")
+
+Rel(core, db, "Читает/Записывает", "SQL / ORM")
+Rel(core, gcal_client, "Вызывает методы", "Внутренний API")
+Rel(gcal_client, gcal, "Проверяет/Создает события", "REST API")
+
+@enduml

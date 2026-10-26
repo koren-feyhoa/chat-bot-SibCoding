@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+actor "Клиент" as Client
+actor "Администратор" as Admin
+
+
+  usecase "Авторизоваться" as UC1
+  usecase "Просмотреть список коворкингов" as UC2
+  usecase "Просмотреть занятые слоты" as UC3
+  usecase "Создать заявку на бронь" as UC4
+  usecase "Проверить доступность слота" as UC4_1
+  usecase "Получить уведомление о статусе" as UC5
+  usecase "Просмотреть новые заявки" as UC6
+  usecase "Одобрить заявку" as UC7
+  usecase "Создать событие в календаре" as UC7_1
+  usecase "Отклонить заявку" as UC8
+  usecase "Отменить бронирование" as UC9
+  usecase "Удалить событие из календаря" as UC9_1
+  usecase "Управлять коворкингами и админами" as UC10
+
+
+Client --> UC1
+Client --> UC2
+Client --> UC3
+Client --> UC4
+Client --> UC5
+
+Admin --> UC1
+Admin --> UC6
+Admin --> UC7
+Admin --> UC8
+Admin --> UC9
+Admin --> UC10
+
+UC4 .> UC4_1 
+UC7 .> UC7_1 
+UC9 .> UC9_1 
+@enduml

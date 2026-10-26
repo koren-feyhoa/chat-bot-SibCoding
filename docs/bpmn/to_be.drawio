@@ -1,0 +1,229 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Страница-1" id="RnQ48Cr1uapbsC8ABix-">
+    <mxGraphModel dx="3493" dy="1253" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lane_client" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1" value="Клиент (TG / MAX)" vertex="1">
+          <mxGeometry height="860" width="410" x="-360" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="c_start" parent="lane_client" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Начало:&#xa;Потребность в брони" vertex="1">
+          <mxGeometry height="60" width="150" x="80" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c_open" parent="lane_client" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" value="Открыть бота&#xa;в TG или MAX" vertex="1">
+          <mxGeometry height="50" width="150" x="80" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c_input" parent="lane_client" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" value="Ввести ФИО, дату, время, описание" vertex="1">
+          <mxGeometry height="60" width="150" x="80" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="c_wait" parent="lane_client" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" value="Ожидать решения" vertex="1">
+          <mxGeometry height="50" width="150" x="80" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="c_notify" parent="lane_client" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" value="Получить уведомление в свой мессенджер" vertex="1">
+          <mxGeometry height="60" width="150" x="80" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="c_end" parent="lane_client" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Конец" vertex="1">
+          <mxGeometry height="50" width="150" x="80" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_c1" edge="1" parent="lane_client" source="c_start" target="c_open">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_c2" edge="1" parent="lane_client" source="c_open" target="c_input">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_c3" edge="1" parent="lane_client" source="c_input" target="c_wait">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_c4" edge="1" parent="lane_client" source="c_wait" target="c_notify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_c5" edge="1" parent="lane_client" source="c_notify" target="c_end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_gateway" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontStyle=1" value="Шлюз (Telegram / MAX API)" vertex="1">
+          <mxGeometry height="860" width="240" x="50" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="g_recv" parent="lane_gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;" value="Принять запрос" vertex="1">
+          <mxGeometry height="50" width="150" x="60" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="g_send" parent="lane_gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;" value="Отправить ответ" vertex="1">
+          <mxGeometry height="50" width="150" x="45" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_core" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;fontStyle=1" value="Ядро системы (Backend)" vertex="1">
+          <mxGeometry height="860" width="460" x="290" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="core_req" parent="lane_core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;" value="Обработать запрос" vertex="1">
+          <mxGeometry height="50" width="150" x="80" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="core_get_space" parent="lane_core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;" value="Запросить ID календаря коворкинга" vertex="1">
+          <mxGeometry height="50" width="190" x="60" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_core2" edge="1" parent="lane_core" source="core_req" target="core_get_space">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="core_check_cal" parent="lane_core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;" value="Проверить слот в Google Calendar" vertex="1">
+          <mxGeometry height="50" width="190" x="60" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_core3" edge="1" parent="lane_core" source="core_get_space" target="core_check_cal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="core_gate_free" parent="lane_core" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Слот&#xa;свободен?" vertex="1">
+          <mxGeometry height="70" width="100" x="320" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_core4" edge="1" parent="lane_core" source="core_check_cal" target="core_gate_free">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_db" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#616161;fontStyle=1" value="База данных (PostgreSQL)" vertex="1">
+          <mxGeometry height="860" width="240" x="750" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="db_spaces" parent="lane_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e0e0e0;strokeColor=#616161;" value="Таблица Spaces&#xa;(Коворкинги + calendar_id)" vertex="1">
+          <mxGeometry height="70" width="160" x="50" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_fin1" edge="1" parent="lane_db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="270" />
+              <mxPoint x="220" y="770" />
+            </Array>
+            <mxPoint x="340" y="270" as="sourcePoint" />
+            <mxPoint x="-80" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="db_bookings" parent="lane_db" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e0e0e0;strokeColor=#616161;" value="Таблица Bookings&#xa;(Заявки)" vertex="1">
+          <mxGeometry height="70" width="160" x="40" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_calendar" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#388e3c;fontStyle=1" value="Google Calendar" vertex="1">
+          <mxGeometry height="860" width="310" x="990" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cal_create" parent="lane_calendar" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#388e3c;" value="Создать событие" vertex="1">
+          <mxGeometry height="50" width="150" x="100" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="cal_check" parent="lane_calendar" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#388e3c;" value="Проверить занятость" vertex="1">
+          <mxGeometry height="50" width="150" x="100" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_admin" parent="1" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;fontStyle=1" value="Администратор (Telegram)" vertex="1">
+          <mxGeometry height="860" width="440" x="1300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="adm_approve" parent="lane_admin" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;" value="Нажать &quot;Одобрить&quot;" vertex="1">
+          <mxGeometry height="50" width="150" x="270" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="adm_reject" parent="lane_admin" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;" value="Ввести причину отказа" vertex="1">
+          <mxGeometry height="50" width="150" x="70" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="adm_gate" parent="lane_admin" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Решение?" vertex="1">
+          <mxGeometry height="70" width="100" x="170" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="adm_recv" parent="lane_admin" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;" value="Получить уведомление" vertex="1">
+          <mxGeometry height="50" width="150" x="145" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm2" edge="1" parent="lane_admin" source="adm_recv" target="adm_gate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_g1" edge="1" parent="1" source="c_open" target="g_recv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_g2" edge="1" parent="1" source="g_send" target="c_notify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="core_save_db" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;" value="Сохранить заявку в БД&#xa;(status: pending)" vertex="1">
+          <mxGeometry height="50" width="190" x="480" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="core_notify_admin" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;" value="Уведомить Админа" vertex="1">
+          <mxGeometry height="50" width="150" x="500" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_core1" edge="1" parent="1" source="g_recv" target="core_req">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_core5_yes" edge="1" parent="1" source="txt_core5_yes" target="core_save_db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_core5_no" edge="1" parent="1" source="txt_core5_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="g_send">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_core6" edge="1" parent="1" source="core_save_db" target="core_notify_admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_db1" edge="1" parent="1" source="core_get_space" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="db_spaces">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_db2" edge="1" parent="1" source="core_save_db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="db_bookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cal1" edge="1" parent="1" source="core_check_cal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="cal_check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_cal2" edge="1" parent="1" source="cal_check" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="core_gate_free">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm1" edge="1" parent="1" source="core_notify_admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="adm_recv">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm3_yes" edge="1" parent="1" source="txt_adm3_yes" target="adm_approve">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm3_no" edge="1" parent="1" source="txt_adm3_no" target="adm_reject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_adm_to_cal" edge="1" parent="1" source="adm_approve" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="cal_create">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="core_finish" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;" value="Обновить статус в БД&#xa;и уведомить клиента" vertex="1">
+          <mxGeometry height="50" width="190" x="480" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_fin2" edge="1" parent="1" source="adm_reject" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="core_finish">
+          <mxGeometry relative="1" x="-0.0576" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="175" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_fin3" edge="1" parent="1" source="core_finish" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="g_send">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VnoVcPXC3OuYo5uV5B8l-2" edge="1" parent="1" source="adm_gate" target="txt_adm3_no" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1486" y="493" as="sourcePoint" />
+            <mxPoint x="1448" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="txt_adm3_no" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" value="Отклонить" vertex="1">
+          <mxGeometry height="20" width="80" x="1415" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="VnoVcPXC3OuYo5uV5B8l-3" edge="1" parent="1" source="adm_gate" target="txt_adm3_yes" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1500" y="497" as="sourcePoint" />
+            <mxPoint x="1636" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="txt_adm3_yes" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" value="Одобрить" vertex="1">
+          <mxGeometry height="20" width="70" x="1530" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="VnoVcPXC3OuYo5uV5B8l-5" edge="1" parent="1" source="core_gate_free" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="txt_core5_no" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="430" y="505" />
+              <mxPoint x="430" y="690" />
+              <mxPoint x="170" y="690" />
+            </Array>
+            <mxPoint x="660" y="480" as="sourcePoint" />
+            <mxPoint x="170" y="720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="txt_core5_no" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" value="Нет (занято)" vertex="1">
+          <mxGeometry height="20" width="70" x="320" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="VnoVcPXC3OuYo5uV5B8l-6" edge="1" parent="1" source="core_gate_free" target="txt_core5_yes" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="646" y="471" as="sourcePoint" />
+            <mxPoint x="588" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="txt_core5_yes" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" value="Да" vertex="1">
+          <mxGeometry height="20" width="30" x="600" y="520" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

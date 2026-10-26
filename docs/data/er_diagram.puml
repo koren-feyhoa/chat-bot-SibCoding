@@ -1,0 +1,53 @@
+@startuml
+!theme plain
+hide circle
+skinparam linetype ortho
+
+
+entity "spaces" as spaces {
+  * id : UUID <<PK>>
+  --
+  * name : VARCHAR
+  * google_calendar_id : VARCHAR
+}
+
+entity "users" as users {
+  * id : UUID <<PK>>
+  --
+  * platform : ENUM(tg, max)
+  * platform_user_id : BIGINT
+  * fullname : VARCHAR
+  * role : ENUM(client, admin)
+  space_id : UUID <<FK>> 
+}
+
+entity "bookings" as bookings {
+  * id : UUID <<PK>>
+  --
+  * user_id : UUID <<FK>>
+  * space_id : UUID <<FK>>
+  * start_time : TIMESTAMP
+  * end_time : TIMESTAMP
+  * description : TEXT
+  * status : ENUM(pending, approved, rejected, cancelled)
+  reject_reason : TEXT
+  calendar_event_id : VARCHAR
+  * created_at : TIMESTAMP
+}
+
+entity "admin_logs" as logs {
+  * id : UUID <<PK>>
+  --
+  * admin_id : UUID <<FK>>
+  * action : VARCHAR
+  * details : TEXT
+  * created_at : TIMESTAMP
+}
+
+' Связи
+spaces ||--o{ users 
+spaces ||--o{ bookings
+users ||--o{ bookings 
+users ||--o{ logs 
+
+@enduml
