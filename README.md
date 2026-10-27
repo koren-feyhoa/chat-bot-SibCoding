@@ -90,4 +90,5 @@ C4 и ER относятся к целевому состоянию. ADR пока
 | Войцехович Елена | Тестировщик | [evoj1](https://github.com/evoj1) |
 
 В работе над проектом используется модель ветвления GitHub Flow
-##[Трекер задач](https://github.com/koren-feyhoa/chat-bot-SibCoding/issues).
+[Трекер задач](https://github.com/koren-feyhoa/chat-bot-SibCoding/issues).
+
