@@ -65,6 +65,8 @@ README.md
 
 ## Документация практической работы
 
+Предлагаемый объём первого релиза и сценарий его приёмки: [границы версии 0.1.0](docs/requirements/first_release_scope.md). Документ по задаче #14 ожидает согласования команды и отделяет первый выпуск от полного целевого решения.
+
 | Этап | Артефакты |
 | --- | --- |
 | 1 Анализ предметной области | [As-Is и узкие места](docs/bpmn/as_is_analysis.md), [схема As-Is](docs/bpmn/as_is.png) |
@@ -88,4 +90,4 @@ C4 и ER относятся к целевому состоянию. ADR пока
 | Войцехович Елена | Тестировщик | [evoj1](https://github.com/evoj1) |
 
 В работе над проектом используется модель ветвления GitHub Flow
-?? [Трекер задач](https://github.com/koren-feyhoa/chat-bot-SibCoding/issues). ??
+[Трекер задач](https://github.com/koren-feyhoa/chat-bot-SibCoding/issues).
