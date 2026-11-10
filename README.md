@@ -91,4 +91,3 @@ C4 и ER относятся к целевому состоянию. ADR пока
 
 В работе над проектом используется модель ветвления GitHub Flow
 [Трекер задач](https://github.com/koren-feyhoa/chat-bot-SibCoding/issues).
-
